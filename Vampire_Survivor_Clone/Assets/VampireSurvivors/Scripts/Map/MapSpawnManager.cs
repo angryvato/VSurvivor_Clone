@@ -14,6 +14,7 @@ public class MapSpawnManager : MonoBehaviour
     GameObject newMap;
     GameObject instGameObject;
     public bool connected;
+    string objectTag;
 
     public float distance = 25;
 
@@ -30,6 +31,8 @@ public class MapSpawnManager : MonoBehaviour
         {
             if(collision.gameObject.tag == "MapCenter")
             {
+                Debug.Log("Found MapCenter by tag");
+
                 mapCenterPoint = collision.gameObject;
                 groundMap = mapCenterPoint.transform.Find("GroundMap").gameObject;
                 AddToList();
@@ -39,6 +42,8 @@ public class MapSpawnManager : MonoBehaviour
 
     void AddToList()
     {
+        Debug.Log("Currently in AddToList method");
+
         spawnPoints.Add(groundMap.transform.Find("Left").gameObject);
         spawnPoints.Add(groundMap.transform.Find("Right").gameObject);
         spawnPoints.Add(groundMap.transform.Find("Top").gameObject);
@@ -57,8 +62,12 @@ public class MapSpawnManager : MonoBehaviour
             this.groundMap.SetActive(true);
 
         if(Vector3.Distance(player.transform.position, this.mapCenterPoint.transform.position) < distance)
-        {            
-            CheckToSpawn();
+        {  
+            if(spawnPoints != null)
+            {
+                Debug.Log("Spawnpoints is not NULL!");
+                CheckToSpawn();
+            }
         }
     }
 
@@ -68,7 +77,7 @@ public class MapSpawnManager : MonoBehaviour
         {
             if (go.GetComponent<ConnectCheck>().isConnected == false)
             {
-                string tag = go.tag;
+                objectTag = go.tag;
                 mapPointTransform = go.transform;
                 connected = go.GetComponent<ConnectCheck>().isConnected;
                 SpawnSwitch();
@@ -80,7 +89,7 @@ public class MapSpawnManager : MonoBehaviour
     {
         int rand = UnityEngine.Random.Range(0, mapPrefabs.Count);
 
-        switch (tag)
+        switch (objectTag)
         {
             case "Right":
                 connected = true;

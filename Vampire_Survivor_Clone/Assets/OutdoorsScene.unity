@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2003.3196, g: 2148.9124, b: 3176.2036, a: 1}
+  m_IndirectSpecularColor: {r: 2003.3196, g: 2148.8186, b: 3175.9849, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1333,21 +1333,9 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &562921553149194201 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 589008265427725096, guid: f4ee538ba2f44e040a88000539b92dfd,
-    type: 3}
-  m_PrefabInstance: {fileID: 8299077081077886945}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &678145285303760713 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4162739419847385091, guid: f4ee538ba2f44e040a88000539b92dfd,
-    type: 3}
-  m_PrefabInstance: {fileID: 8299077081077886945}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &701743188388233491 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6488781090957220167, guid: f4ee538ba2f44e040a88000539b92dfd,
     type: 3}
   m_PrefabInstance: {fileID: 8299077081077886945}
   m_PrefabAsset: {fileID: 0}
@@ -1559,18 +1547,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1117770147}
   m_SourcePrefab: {fileID: 100100000, guid: f9b4d680fa4d18e48bcc8b21499a1528, type: 3}
---- !u!1 &3449910245219802010 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2875318269890190050, guid: f4ee538ba2f44e040a88000539b92dfd,
-    type: 3}
-  m_PrefabInstance: {fileID: 8299077081077886945}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4043805060999916722 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1386331262051863460, guid: f4ee538ba2f44e040a88000539b92dfd,
-    type: 3}
-  m_PrefabInstance: {fileID: 8299077081077886945}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5313534672774213127
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1783,30 +1759,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8299077081077886945}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7187013788751999743 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2312926971631733814, guid: f4ee538ba2f44e040a88000539b92dfd,
-    type: 3}
-  m_PrefabInstance: {fileID: 8299077081077886945}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7522731644316490254 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2592178368579803733, guid: f4ee538ba2f44e040a88000539b92dfd,
-    type: 3}
-  m_PrefabInstance: {fileID: 8299077081077886945}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7568401010212712840 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 132297338227347164, guid: f4ee538ba2f44e040a88000539b92dfd,
-    type: 3}
-  m_PrefabInstance: {fileID: 8299077081077886945}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7866995475577753080 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6870247184711864841, guid: f4ee538ba2f44e040a88000539b92dfd,
-    type: 3}
-  m_PrefabInstance: {fileID: 8299077081077886945}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7957596148363845222
 GameObject:
   m_ObjectHideFlags: 0
@@ -1840,15 +1792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6da94c910eeee5d44897adf0da34a57e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoints:
-  - {fileID: 701743188388233491}
-  - {fileID: 7568401010212712840}
-  - {fileID: 562921553149194201}
-  - {fileID: 7522731644316490254}
-  - {fileID: 7866995475577753080}
-  - {fileID: 3449910245219802010}
-  - {fileID: 4043805060999916722}
-  - {fileID: 7187013788751999743}
+  spawnPoints: []
   mapPrefabs:
   - {fileID: 3971867721148395852, guid: f4ee538ba2f44e040a88000539b92dfd, type: 3}
   groundMap: {fileID: 678145285303760713}
