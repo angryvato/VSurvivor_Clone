@@ -12,8 +12,7 @@ public class Movement : MonoBehaviour
     public Vector2 _mousePosition;    
     public Transform _lookTarget;
     public Animator _animator;
-    public Camera _camera;
-    public Renderer _renderer;
+    public Camera _camera;    
 
     PlayerInputShit _input;
 
@@ -42,6 +41,7 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
+        //Debug.Log("Movement x is: " + movement.x + "Movement z is: " + movement.y);
       
         transform.LookAt(_lookTarget);
 
