@@ -16,8 +16,7 @@ public class _mapTrigger : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if(other.CompareTag("Player"))
-        {
-            Debug.Log("Name of trigger parent is: " + targetMap.name);
+        {            
             _mapController.currentMap = targetMap;
         }
     }

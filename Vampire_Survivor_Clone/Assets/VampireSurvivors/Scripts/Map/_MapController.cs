@@ -11,7 +11,8 @@ public class _MapController : MonoBehaviour
     public LayerMask mapMask;
     Movement playerMovement;
     public GameObject currentMap;
-    public GameObject checkSphere;    
+    public GameObject checkSphere;
+    Collider[] hitColliders;
 
     void Start()
     {
@@ -21,101 +22,166 @@ public class _MapController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MapChecker();
+        NewMapChecker();
     }
 
-    void MapChecker()
-    {
-        if(!currentMap)
-        {
-            return;
-        }
-
-        //Left
-        if(playerMovement.movement.x > 0 && playerMovement.movement.y == 0)
-        {          
-            Collider[] hitColliders = Physics.OverlapSphere(currentMap.transform.Find("Left").position + new Vector3(25, 0, 0), checkerRadius, mapMask);
-            if(hitColliders.Length <= 0)
-            {
-                noMapPosition = currentMap.transform.Find("Left").position + new Vector3(25, 0, 0);
-                SpawnMap();
-            }
-        }
-        //Right
-        if (playerMovement.movement.x < 0 && playerMovement.movement.y == 0)
-        {        
-            Collider[] hitColliders = Physics.OverlapSphere(currentMap.transform.Find("Right").position + new Vector3(-25, 0, 0), checkerRadius, mapMask);
-            if (hitColliders.Length <= 0)
-            {
-                noMapPosition = currentMap.transform.Find("Right").position + new Vector3(-25, 0, 0);
-                SpawnMap();
-            }
-        }
+ //   void MapChecker()
+ //   {
+ //       if(!currentMap)
+ //       {
+ //           return;
+ //       }
+ //
+ //       //Left
+ //       if(playerMovement.movement.x > 0 && playerMovement.movement.y == 0)
+ //       {          
+ //           Collider[] hitColliders = Physics.OverlapSphere(currentMap.transform.Find("Left").position + new Vector3(25, 0, 0), checkerRadius, mapMask);
+ //           if(hitColliders.Length <= 0)
+ //           {
+ //               noMapPosition = currentMap.transform.Find("Left").position + new Vector3(25, 0, 0);
+ //               SpawnMap();
+ //           }
+ //       }
+ //       //Right
+ //       if (playerMovement.movement.x < 0 && playerMovement.movement.y == 0)
+ //       {        
+ //           Collider[] hitColliders = Physics.OverlapSphere(currentMap.transform.Find("Right").position + new Vector3(-25, 0, 0), checkerRadius, mapMask);
+ //           if (hitColliders.Length <= 0)
+ //           {
+ //               noMapPosition = currentMap.transform.Find("Right").position + new Vector3(-25, 0, 0);
+ //               SpawnMap();
+ //           }
+ //       }
         //Up
-        if (playerMovement.movement.x == 0 && playerMovement.movement.y < 0)
-        {        
-            Collider[] hitColliders = Physics.OverlapSphere(currentMap.transform.Find("Top").position + new Vector3(0, 0, -25), checkerRadius, mapMask);
-            if (hitColliders.Length <= 0)
-            {
-                noMapPosition = currentMap.transform.Find("Top").position + new Vector3(0, 0, -25);
-                SpawnMap();
-            }
-        }
+ //       if (playerMovement.movement.x == 0 && playerMovement.movement.y < 0)
+ //       {        
+//            Collider[] hitColliders = Physics.OverlapSphere(currentMap.transform.Find("Top").position + new Vector3(0, 0, -25), checkerRadius, mapMask);
+ //           if (hitColliders.Length <= 0)
+ //           {
+//                noMapPosition = currentMap.transform.Find("Top").position + new Vector3(0, 0, -25);
+ //               SpawnMap();
+//            }
+//        }
         //Down
-        if (playerMovement.movement.x == 0 && playerMovement.movement.y > 0)
-        {        
-            Collider[] hitColliders = Physics.OverlapSphere(currentMap.transform.Find("Bottom").position + new Vector3(0, 0, 25), checkerRadius, mapMask);
-            if (hitColliders.Length <= 0)
-            {
-                noMapPosition = currentMap.transform.Find("Bottom").position + new Vector3(0, 0, 25);
-                SpawnMap();
-            }
-        }
+ //       if (playerMovement.movement.x == 0 && playerMovement.movement.y > 0)
+ //       {        
+ //           Collider[] hitColliders = Physics.OverlapSphere(currentMap.transform.Find("Bottom").position + new Vector3(0, 0, 25), checkerRadius, mapMask);
+ //           if (hitColliders.Length <= 0)
+ //           {
+ //               noMapPosition = currentMap.transform.Find("Bottom").position + new Vector3(0, 0, 25);
+ //               SpawnMap();
+ //           }
+ //       }
         //TopRight
-        if (playerMovement.movement.x < 0 && playerMovement.movement.y < 0)
-        {        
-            Collider[] hitColliders = Physics.OverlapSphere(currentMap.transform.Find("TopRight").position + new Vector3(-25, 0, -25), checkerRadius, mapMask);
-            if (hitColliders.Length <= 0)
-            {
-                noMapPosition = currentMap.transform.Find("TopRight").position + new Vector3(-25, 0, -25);
-                SpawnMap();
-            }
-        }
+//        if (playerMovement.movement.x < 0 && playerMovement.movement.y < 0)
+ //       {        
+ //           Collider[] hitColliders = Physics.OverlapSphere(currentMap.transform.Find("TopRight").position + new Vector3(-25, 0, -25), checkerRadius, mapMask);
+ //           if (hitColliders.Length <= 0)
+ //           {
+ //               noMapPosition = currentMap.transform.Find("TopRight").position + new Vector3(-25, 0, -25);
+ //               SpawnMap();
+ //           }
+ //       }
         //TopLeft
-        if (playerMovement.movement.x > 0 && playerMovement.movement.y < 0)
-        {         
-            Collider[] hitColliders = Physics.OverlapSphere(currentMap.transform.Find("TopLeft").position + new Vector3(25, 0, -25), checkerRadius, mapMask);
-            if (hitColliders.Length <= 0)
-            {
-                noMapPosition = currentMap.transform.Find("TopLeft").position + new Vector3(25, 0, -25);
-                SpawnMap();
-            }
-        }
+ //       if (playerMovement.movement.x > 0 && playerMovement.movement.y < 0)
+//        {         
+ //           Collider[] hitColliders = Physics.OverlapSphere(currentMap.transform.Find("TopLeft").position + new Vector3(25, 0, -25), checkerRadius, mapMask);
+ //           if (hitColliders.Length <= 0)
+ //           {
+ //               noMapPosition = currentMap.transform.Find("TopLeft").position + new Vector3(25, 0, -25);
+ //               SpawnMap();
+ //           }
+ //       }
         //BottomRight
-        if (playerMovement.movement.x < 0 && playerMovement.movement.y > 0)
-        {         
-            Collider[] hitColliders = Physics.OverlapSphere(currentMap.transform.Find("BottomRight").position + new Vector3(-25, 0, 25), checkerRadius, mapMask);
-            if (hitColliders.Length <= 0)
-            {
-                noMapPosition = currentMap.transform.Find("BottomRight").position + new Vector3(-25, 0, 25);
-                SpawnMap();
-            }
-        }
+ //       if (playerMovement.movement.x < 0 && playerMovement.movement.y > 0)
+ //       {         
+ //           Collider[] hitColliders = Physics.OverlapSphere(currentMap.transform.Find("BottomRight").position + new Vector3(-25, 0, 25), checkerRadius, mapMask);
+ //           if (hitColliders.Length <= 0)
+ //           {
+  //              noMapPosition = currentMap.transform.Find("BottomRight").position + new Vector3(-25, 0, 25);
+ //               SpawnMap();
+ //           }
+ //       }
         //BottomLeft
-        if (playerMovement.movement.x > 0 && playerMovement.movement.y > 0)
-        {         
-            Collider[] hitColliders = Physics.OverlapSphere(currentMap.transform.Find("BottomLeft").position + new Vector3(25, 0, 25), checkerRadius, mapMask);
-            if (hitColliders.Length <= 0)
-            {
-                noMapPosition = currentMap.transform.Find("BottomLeft").position + new Vector3(25, 0, 25);
-                SpawnMap();
-            }
-        }
-    }
+ //       if (playerMovement.movement.x > 0 && playerMovement.movement.y > 0)
+ //       {         
+ //           Collider[] hitColliders = Physics.OverlapSphere(currentMap.transform.Find("BottomLeft").position + new Vector3(25, 0, 25), checkerRadius, mapMask);
+ //           if (hitColliders.Length <= 0)
+ //           {
+ //               noMapPosition = currentMap.transform.Find("BottomLeft").position + new Vector3(25, 0, 25);
+ //               SpawnMap();
+ //           }
+ //       }
+ //   }
 
     void SpawnMap()
     {
         int Rand = Random.Range(0, mapChunks.Count);
         Instantiate(mapChunks[Rand], noMapPosition, Quaternion.identity);
+    }
+
+    void NewMapChecker()
+    {
+        if (!currentMap)
+        {
+            return;
+        }
+
+        //Left        
+            hitColliders = Physics.OverlapSphere(currentMap.transform.Find("Left").position + new Vector3(25, 0, 0), checkerRadius, mapMask);
+            if (hitColliders.Length <= 0)
+            {
+                noMapPosition = currentMap.transform.Find("Left").position + new Vector3(25, 0, 0);
+                SpawnMap();
+            }        
+        //Right        
+            hitColliders = Physics.OverlapSphere(currentMap.transform.Find("Right").position + new Vector3(-25, 0, 0), checkerRadius, mapMask);
+            if (hitColliders.Length <= 0)
+            {
+                noMapPosition = currentMap.transform.Find("Right").position + new Vector3(-25, 0, 0);
+                SpawnMap();
+            }        
+        //Up        
+            hitColliders = Physics.OverlapSphere(currentMap.transform.Find("Top").position + new Vector3(0, 0, -25), checkerRadius, mapMask);
+            if (hitColliders.Length <= 0)
+            {
+                noMapPosition = currentMap.transform.Find("Top").position + new Vector3(0, 0, -25);
+                SpawnMap();
+            }        
+        //Down        
+            hitColliders = Physics.OverlapSphere(currentMap.transform.Find("Bottom").position + new Vector3(0, 0, 25), checkerRadius, mapMask);
+            if (hitColliders.Length <= 0)
+            {
+                noMapPosition = currentMap.transform.Find("Bottom").position + new Vector3(0, 0, 25);
+                SpawnMap();
+            }        
+        //TopRight        
+            hitColliders = Physics.OverlapSphere(currentMap.transform.Find("TopRight").position + new Vector3(-25, 0, -25), checkerRadius, mapMask);
+            if (hitColliders.Length <= 0)
+            {
+                noMapPosition = currentMap.transform.Find("TopRight").position + new Vector3(-25, 0, -25);
+                SpawnMap();
+            }        
+        //TopLeft        
+            hitColliders = Physics.OverlapSphere(currentMap.transform.Find("TopLeft").position + new Vector3(25, 0, -25), checkerRadius, mapMask);
+            if (hitColliders.Length <= 0)
+            {
+                noMapPosition = currentMap.transform.Find("TopLeft").position + new Vector3(25, 0, -25);
+                SpawnMap();
+            }        
+        //BottomRight        
+            hitColliders = Physics.OverlapSphere(currentMap.transform.Find("BottomRight").position + new Vector3(-25, 0, 25), checkerRadius, mapMask);
+            if (hitColliders.Length <= 0)
+            {
+                noMapPosition = currentMap.transform.Find("BottomRight").position + new Vector3(-25, 0, 25);
+                SpawnMap();
+            }        
+        //BottomLeft        
+            hitColliders = Physics.OverlapSphere(currentMap.transform.Find("BottomLeft").position + new Vector3(25, 0, 25), checkerRadius, mapMask);
+            if (hitColliders.Length <= 0)
+            {
+                noMapPosition = currentMap.transform.Find("BottomLeft").position + new Vector3(25, 0, 25);
+                SpawnMap();
+            }        
     }
 }

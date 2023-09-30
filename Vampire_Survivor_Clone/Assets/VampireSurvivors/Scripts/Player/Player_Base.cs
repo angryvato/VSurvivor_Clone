@@ -37,8 +37,7 @@ public class Player_Base : MonoBehaviour
     }
 
     public void TakingDamage(float _incDamage)
-    {
-        Debug.Log("In TakingDamage on Player_Base");
+    {        
         Health -= _incDamage;
     }
 }
